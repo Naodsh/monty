@@ -22,3 +22,22 @@ void process_file(FILE *file, stack_t **stack)
 		execute_instruction(stack, opcode, arg, line_number);
 	}
 }
+
+
+
+/**
+ * free_stack - Frees a stack.
+ * @stack: Pointer to the stack.
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *current = stack;
+
+	while (current)
+	{
+		stack_t *next = current->next;
+
+		free(current);
+		current = next;
+	}
+}
