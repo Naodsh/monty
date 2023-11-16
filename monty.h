@@ -49,6 +49,11 @@ void execute_nop(stack_t **stack, char *arg, unsigned int line_number);
 void execute_swap(stack_t **stack, char *arg, unsigned int line_number);
 void execute_add(stack_t **stack, char *arg, unsigned int line_number);
 
+void execute_sub(stack_t **stack, char *arg, unsigned int line_number);
+void execute_div(stack_t **stack, char *arg, unsigned int line_number);
+void execute_mul(stack_t **stack, char *arg, unsigned int line_number);
+void execute_mod(stack_t **stack, char *arg, unsigned int line_number);
+
 void push(stack_t **stack, int value, unsigned int line_number);
 
 void execute_instruction(stack_t **stack, char *opcode, char *arg,

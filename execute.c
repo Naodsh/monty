@@ -18,6 +18,10 @@ void execute_instruction(stack_t **stack, char *opcode, char *arg,
 	{"swap", execute_swap},
 	{"add", execute_add},
 	{"nop", execute_nop},
+	{"sub", execute_pop},
+	{"div", execute_div},
+	{"mul", execute_mul},
+	{"mod", execute_mod},
 };
 	size_t i;
 
