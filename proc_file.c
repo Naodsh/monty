@@ -19,7 +19,6 @@ void process_file(FILE *file, stack_t **stack)
 
 		line_number++;
 
-		printf("%s\n", opcode);
 		execute_instruction(stack, opcode, arg, line_number);
 	}
 }
