@@ -15,6 +15,9 @@ void execute_instruction(stack_t **stack, char *opcode, char *arg,
 	{"pall", execute_pall},
 	{"pint", execute_pint},
 	{"pop", execute_pop},
+	{"swap", execute_swap},
+	{"add", execute_add},
+	{"nop", execute_nop},
 };
 	size_t i;
 
@@ -95,4 +98,19 @@ void push(stack_t **stack, int value, unsigned int line_number)
 	if (*stack)
 		(*stack)->prev = new_node;
 	*stack = new_node;
+}
+
+/**
+ * execute_nop - Does nothing
+ * @stack: Pointer to the stack
+ * @line_number: Line number in the file
+ * @arg: char pointer
+ *
+ * This function doesn't perform any operation.
+ */
+void execute_nop(stack_t **stack, char *arg, unsigned int line_number)
+{
+	(void)(stack);
+	(void)(arg);
+	(void)(line_number);
 }

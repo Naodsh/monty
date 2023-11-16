@@ -66,3 +66,55 @@ void execute_pop(stack_t **stack, char *arg, unsigned int line_number)
 
 	free(top);
 }
+/**
+ * execute_swap - Swaps the top two elements of the stack
+ * @stack: Pointer to the stack.
+ * @arg: char pointer.
+ * @line_number: Line number of the instruction.
+ */
+void execute_swap(stack_t **stack, char *arg, unsigned int line_number)
+{
+	stack_t *first, *second;
+	(void)(arg);
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	first = *stack;
+	second = first->next;
+
+	first->prev = second;
+	first->next = second->next;
+	if (second->next != NULL)
+	{
+		second->next->prev = first;
+	}
+	second->prev = NULL;
+	second->next = first;
+	*stack = second;
+}
+/**
+ * execute_add - Adds the top two elements of the stack
+ * @stack: Pointer to the stack
+ * @line_number: Line number in the file
+ * @arg: void parameter
+ *
+ */
+void execute_add(stack_t **stack, char *arg, unsigned int line_number)
+{
+	(void)(arg);
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n += (*stack)->n;
+	execute_pop(stack, arg, line_number);
+}
+
