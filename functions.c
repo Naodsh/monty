@@ -62,3 +62,43 @@ void free_stack(stack_t *stack)
 		current = next;
 	}
 }
+
+/**
+ * pint - Prints the top values on the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number of the instruction.
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * pop - delte from the top on the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number of the instruction.
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	top = *stack;
+	*stack = top->next;
+	if (*stack != NULL)
+	{
+		(*stack)->prev = NULL;
+	}
+	free(top);
+}

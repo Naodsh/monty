@@ -43,6 +43,7 @@ void free_stack(stack_t *stack);
 void execute_instruction(stack_t **stack, char *opcode, char *arg,
 		unsigned int line_number);
 void process_file(FILE *file, stack_t **stack);
-
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 #endif /* MONTY_H */
 
